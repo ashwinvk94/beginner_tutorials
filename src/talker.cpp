@@ -30,6 +30,7 @@
 // %EndTag(ROS_HEADER)%
 // %Tag(MSG_HEADER)%
 #include "std_msgs/String.h"
+#include "beginner_tutorials/customString.h"
 // %EndTag(MSG_HEADER)%
 
 #include <sstream>
@@ -80,7 +81,7 @@ int main(int argc, char **argv)
    * buffer up before throwing some away.
    */
 // %Tag(PUBLISHER)%
-  ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+  ros::Publisher chatter_pub = n.advertise<beginner_tutorials::customString>("chatter", 1000);
 // %EndTag(PUBLISHER)%
 
 // %Tag(LOOP_RATE)%
@@ -100,15 +101,15 @@ int main(int argc, char **argv)
      * This is a message object. You stuff it with data, and then publish it.
      */
 // %Tag(FILL_MESSAGE)%
-    std_msgs::String msg;
+    beginner_tutorials::customString msg;
 
     std::stringstream ss;
-    ss << "hello world " << count;
-    msg.data = ss.str();
+    ss << "hello enpm808x " << count;
+    msg.data.data = ss.str();
 // %EndTag(FILL_MESSAGE)%
 
 // %Tag(ROSCONSOLE)%
-    ROS_INFO("%s", msg.data.c_str());
+    ROS_INFO("%s", msg.data.data.c_str());
 // %EndTag(ROSCONSOLE)%
 
     /**

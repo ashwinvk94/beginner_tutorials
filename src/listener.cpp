@@ -27,15 +27,15 @@
 
 // %Tag(FULLTEXT)%
 #include "ros/ros.h"
-#include "std_msgs/String.h"
+#include "beginner_tutorials/customString.h"
 
 /**
  * This tutorial demonstrates simple receipt of messages over the ROS system.
  */
 // %Tag(CALLBACK)%
-void chatterCallback(const std_msgs::String::ConstPtr& msg)
+void chatterCallback(const beginner_tutorials::customString::ConstPtr& msg)
 {
-  ROS_INFO("I heard: [%s]", msg->data.c_str());
+  ROS_INFO("I heard: [%s]", msg->data.data.c_str());
 }
 // %EndTag(CALLBACK)%
 
