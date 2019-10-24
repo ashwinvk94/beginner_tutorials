@@ -26,6 +26,8 @@
  */
 // %Tag(FULLTEXT)%
 // %Tag(ROS_HEADER)%
+
+#include <sstream>
 #include "ros/ros.h"
 // %EndTag(ROS_HEADER)%
 // %Tag(MSG_HEADER)%
@@ -33,13 +35,11 @@
 #include "beginner_tutorials/customString.h"
 // %EndTag(MSG_HEADER)%
 
-#include <sstream>
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
  */
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
    * any ROS arguments and name remapping that were provided at the command line.
@@ -81,7 +81,8 @@ int main(int argc, char **argv)
    * buffer up before throwing some away.
    */
 // %Tag(PUBLISHER)%
-  ros::Publisher chatter_pub = n.advertise<beginner_tutorials::customString>("chatter", 1000);
+  ros::Publisher chatter_pub =
+n.advertise<beginner_tutorials::customString>("chatter", 1000);
 // %EndTag(PUBLISHER)%
 
 // %Tag(LOOP_RATE)%
@@ -94,8 +95,7 @@ int main(int argc, char **argv)
    */
 // %Tag(ROS_OK)%
   int count = 0;
-  while (ros::ok())
-  {
+  while (ros::ok()) {
 // %EndTag(ROS_OK)%
     /**
      * This is a message object. You stuff it with data, and then publish it.
