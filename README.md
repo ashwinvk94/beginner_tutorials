@@ -32,5 +32,5 @@ cpplint $( find . -name \*.hpp -or -name \*.cpp )
 Execute the following commands in a new terminal to run cppcheck
 ```
 cd <path to repository>
-cppcheck --enable=all --std=c++11 -I include/ --suppress=missingIncludeSystem $( find . -name *.cpp )
+cppcheck --enable=all --std=c++11 -I ../../devel/include/ -I ../../../../../../../opt/ros/kinetic/include/ -I ../../../../../../../usr/include/ --check-config --suppress=missingIncludeSystem $( find . -name *.cpp)
 ```
