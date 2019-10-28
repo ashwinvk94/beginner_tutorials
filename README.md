@@ -7,6 +7,9 @@
 
 This repository contains the code to implement the tutorials for ROS provided on the [official website](http://wiki.ros.org/ROS/Tutorials#Beginner_Level).
 
+## Dependencies
+- [Robot Operating System (ROS Kinetic)](http://wiki.ros.org/kinetic/Installation) (middleware for robotics),
+
 
 ## Standard build and run via command-line
 ```
