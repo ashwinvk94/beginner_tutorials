@@ -1,7 +1,6 @@
 # ROS Tutorials
 
 [![Build Status](https://travis-ci.org/ashwinvk94/beginner_tutorials.svg?branch=master)](https://travis-ci.org/ashwinvk94/beginner_tutorials)
-[![Coverage Status](https://coveralls.io/repos/github/ashwinvk94/beginner_tutorials/badge.svg?branch=master)](https://coveralls.io/github/ashwinvk94/beginner_tutorials?branch=master)
 ---
 
 ## Overview
