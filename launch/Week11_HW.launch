@@ -9,7 +9,6 @@
 	type = "talker"
 	name = "talker"
 	output = "screen"
-	args = "$(arg frequency)"
     />
 
    <node
