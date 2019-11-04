@@ -35,6 +35,16 @@
 #include "beginner_tutorials/customString.h"
 // %EndTag(MSG_HEADER)%
 
+#include "beginner_tutorials/changeText.h"
+
+std::string defaultMessage = "This is the defult message";
+
+bool changeMessage(beginner_tutorials::changeText::Request &req,beginner_tutorials::changeText::Response &res) {
+  defaultMessage = req.inputString;
+  res.modifiedString = req.inputString;
+
+  return true;
+}
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -53,7 +63,7 @@ int main(int argc, char **argv) {
 // %Tag(INIT)%
   ros::init(argc, argv, "talker");
 // %EndTag(INIT)%
-
+  auto server = n.advertiseService("changeText", changeMessage);
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
@@ -104,7 +114,7 @@ n.advertise<beginner_tutorials::customString>("chatter", 1000);
     beginner_tutorials::customString msg;
 
     std::stringstream ss;
-    ss << "hello enpm808x " << count;
+    ss << defaultMessage << count;
     msg.data.data = ss.str();
 // %EndTag(FILL_MESSAGE)%
 
