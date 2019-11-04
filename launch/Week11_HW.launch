@@ -1,0 +1,23 @@
+<launch>
+  <env 
+   	name="ROSCONSOLE_CONFIG_FILE"
+   	value="$(find beginner_tutorials)/config/default.conf"
+  />
+
+   <node
+	pkg = "beginner_tutorials"
+	type = "talker"
+	name = "talker"
+	output = "screen"
+	args = "$(arg frequency)"
+    />
+
+   <node
+	pkg = "beginner_tutorials"
+	type = "listener"
+	name = "listener"
+	output = "screen"
+	launch-prefix = "gnome-terminal -e"
+    />
+</launch>
+
