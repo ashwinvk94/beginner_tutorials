@@ -12,7 +12,7 @@
 #include "beginner_tutorials/customString.h"
 #include "beginner_tutorials/editText.h"
 
-extren std::string defaultMessage = "This is the defult message";
+std::string defaultMessage = "This is the defult message";
 
 bool changeMessage(beginner_tutorials::editText::Request &req\
 , beginner_tutorials::editText::Response &res) {
