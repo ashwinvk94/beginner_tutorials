@@ -12,9 +12,10 @@
 #include "beginner_tutorials/customString.h"
 #include "beginner_tutorials/editText.h"
 
-std::string defaultMessage = "This is the defult message";
+extren std::string defaultMessage = "This is the defult message";
 
-bool changeMessage(beginner_tutorials::editText::Request &req,beginner_tutorials::editText::Response &res) {
+bool changeMessage(beginner_tutorials::editText::Request &req\
+, beginner_tutorials::editText::Response &res) {
   defaultMessage = req.inputString;
   res.outputString = req.inputString;
   ROS_WARN_STREAM("Service call has been used to change the default mesage");
