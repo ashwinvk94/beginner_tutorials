@@ -85,7 +85,7 @@ int main(int argc, char **argv) {
 // %Tag(SPIN)%
   ros::spin();
 // %EndTag(SPIN)%
-
+  ROS_ERROR_STREAM("Listener node has died");
   return 0;
 }
 // %EndTag(FULLTEXT)%

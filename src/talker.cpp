@@ -35,14 +35,14 @@
 #include "beginner_tutorials/customString.h"
 // %EndTag(MSG_HEADER)%
 
-#include "beginner_tutorials/changeText.h"
+#include "beginner_tutorials/editText.h"
 
 std::string defaultMessage = "This is the defult message";
 
-bool changeMessage(beginner_tutorials::changeText::Request &req,beginner_tutorials::changeText::Response &res) {
+bool changeMessage(beginner_tutorials::editText::Request &req,beginner_tutorials::editText::Response &res) {
   defaultMessage = req.inputString;
-  res.modifiedString = req.inputString;
-
+  res.outputString = req.inputString;
+  ROS_WARN_STREAM("Service call has been used to change the default mesage");
   return true;
 }
 
@@ -63,7 +63,6 @@ int main(int argc, char **argv) {
 // %Tag(INIT)%
   ros::init(argc, argv, "talker");
 // %EndTag(INIT)%
-  auto server = n.advertiseService("changeText", changeMessage);
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
@@ -103,8 +102,11 @@ n.advertise<beginner_tutorials::customString>("chatter", 1000);
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
+
+  ros::ServiceServer server = n.advertiseService("changeText", changeMessage);
 // %Tag(ROS_OK)%
   int count = 0;
+  ROS_DEBUG_STREAM("Starting string publisher");
   while (ros::ok()) {
 // %EndTag(ROS_OK)%
     /**
@@ -142,7 +144,7 @@ n.advertise<beginner_tutorials::customString>("chatter", 1000);
     ++count;
   }
 
-
+  ROS_FATAL_STREAM("ROS Node has died");
   return 0;
 }
 // %EndTag(FULLTEXT)%
