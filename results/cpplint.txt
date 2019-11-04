@@ -1,0 +1,4 @@
+./src/talker.cpp:18:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::editText::Response &res  [runtime/references] [2]
+Done processing ./src/talker.cpp
+Done processing ./src/listener.cpp
+Total errors found: 1

@@ -12,6 +12,11 @@ add_message_files(
   customString.msg
 )
 
+## DEclare the service files to be built
+add_service_files(
+  FILES
+  editText.srv  
+)
 
 # Generate added messages and services
 generate_messages(DEPENDENCIES std_msgs)
