@@ -42,11 +42,11 @@ rosrun tf view_frames
 
 To run the tests:
 ```
-catkin_make run_tests beginner_tutorials
+rostest beginner_tutorials talkerTest.launch
 ```
 ## Recording using rosbag
 In a terminal run `roslaunch beginner_tutorials Week11_HW.launch`
-In another terminal run the follwing commands:
+In another terminal run the following commands:
 ```
 cd <path to catkin workspace>/src/beginner_tutorials/results
 rosbag record -a -O rostopicsRecord.bag
