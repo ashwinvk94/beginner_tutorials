@@ -1,10 +1,10 @@
- /**
+/**
  @file talker.cpp
  @author Ashwin Varghese Kuruttukulam
  @copyright MIT
- @brief ROS subscriber publishes to  to chatter topic 
+ @brief ROS subscriber publishes to  to chatter topic
  @brief ROS publisher that publishes to chatter topic
- ROS publisher from the ros tutorials page 
+ ROS publisher from the ros tutorials page
  */
 #include <sstream>
 #include "tf/transform_broadcaster.h"
@@ -16,7 +16,8 @@
 std::string defaultMessage = "This is the defult message";
 
 bool changeMessage(beginner_tutorials::editText::Request &req\
-, beginner_tutorials::editText::Response &res) {
+,
+                   beginner_tutorials::editText::Response &res) {
   defaultMessage = req.inputString;
   res.outputString = req.inputString;
   ROS_WARN_STREAM("Service call has been used to change the default mesage");
@@ -39,11 +40,9 @@ int main(int argc, char **argv) {
    */
   ros::init(argc, argv, "talker");
 
-  //tf transform broadcaster object declaration
+  // tf transform broadcaster object declaration
   static tf::TransformBroadcaster br;
   tf::Transform transform;
-  
-
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
@@ -68,8 +67,8 @@ int main(int argc, char **argv) {
    * than we can send them, the number here specifies how many messages to
    * buffer up before throwing some away.
    */
-  ros::Publisher chatter_pub =
-n.advertise<beginner_tutorials::customString>("chatter", 1000);
+  ros::Publisher chatter_pub = n.advertise < beginner_tutorials::customString
+      > ("chatter", 1000);
 
   ros::Rate loop_rate(10);
 
@@ -99,19 +98,19 @@ n.advertise<beginner_tutorials::customString>("chatter", 1000);
      */
     chatter_pub.publish(msg);
 
-    //Setting the position of the transformation
-    transform.setOrigin(tf::Vector3(0,0,1));
-    
-    //Declaring quaternion object
-    tf::Quaternion q;
-    q.setRPY(0,0,1);
+    // Setting the position of the transformation
+    transform.setOrigin(tf::Vector3(0, 0, 1));
 
-    //Setting the orientation of the transformation
+    // Declaring quaternion object
+    tf::Quaternion q;
+    q.setRPY(0, 0, 1);
+
+    // Setting the orientation of the transformation
     transform.setRotation(q);
 
-    //broadcasting the transformation
+    // broadcasting the transformation
     br.sendTransform(
-	tf::StampedTransform(transform,ros::Time::now(),"world","talk"));
+        tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
     ros::spinOnce();
 
