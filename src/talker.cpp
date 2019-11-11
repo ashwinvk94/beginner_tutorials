@@ -7,6 +7,7 @@
  ROS publisher from the ros tutorials page 
  */
 #include <sstream>
+#include<tf/transform_broadcaster.h>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/customString.h"
@@ -37,6 +38,12 @@ int main(int argc, char **argv) {
    * part of the ROS system.
    */
   ros::init(argc, argv, "talker");
+
+  //tf transform broadcaster object declaration
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+  
+
   /**
    * NodeHandle is the main access point to communications with the ROS system.
    * The first NodeHandle constructed will fully initialize this node, and the last
@@ -91,6 +98,20 @@ n.advertise<beginner_tutorials::customString>("chatter", 1000);
      * in the constructor above.
      */
     chatter_pub.publish(msg);
+
+    //Setting the position of the transformation
+    transform.setOrigin(tf::Vector3(0,0,1));
+    
+    //Declaring quaternion object
+    tf::Quaternion q;
+    q.setRPY(0,0,1);
+
+    //Setting the orientation of the transformation
+    transform.setRotation(q);
+
+    //broadcasting the transformation
+    br.sendTransform(
+	tf::StampedTransform(transform,ros::Time::now(),"world","talk"));
 
     ros::spinOnce();
 
