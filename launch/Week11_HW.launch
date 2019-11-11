@@ -18,5 +18,11 @@
 	output = "screen"
 	launch-prefix = "gnome-terminal -e"
     />
+  <node
+	pkg="rosbag"
+	name="record"
+	type="record"
+	args="-a -O rostopicsRecord.bag"
+    />
 </launch>
 
