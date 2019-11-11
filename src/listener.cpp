@@ -1,11 +1,11 @@
- /**
-@file listener.cpp
-@author Ashwin Varghese Kuruttukulam
-@copyright MIT
-@brief ROS subscriber subscribes to chatter topic 
-ROS subscriber created from simple publisher and subscriber tutorials
-found on the ros tutorial page
-*/
+/**
+ @file listener.cpp
+ @author Ashwin Varghese Kuruttukulam
+ @copyright MIT
+ @brief ROS subscriber subscribes to chatter topic
+ ROS subscriber created from simple publisher and subscriber tutorials
+ found on the ros tutorial page
+ */
 
 #include "ros/ros.h"
 #include "beginner_tutorials/customString.h"
@@ -13,7 +13,7 @@ found on the ros tutorial page
 /**
  * This tutorial demonstrates simple receipt of messages over the ROS system.
  */
-void chatterCallback(const beginner_tutorials::customString::ConstPtr& msg) {
+void chatterCallback(const beginner_tutorials::customString::ConstPtr &msg) {
   ROS_INFO("I heard: [%s]", msg->data.data.c_str());
 }
 
