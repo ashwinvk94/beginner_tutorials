@@ -1,4 +1,3 @@
-# %Tag(FULLTEXT)%
 cmake_minimum_required(VERSION 2.8.3)
 project(beginner_tutorials)
 
@@ -18,6 +17,8 @@ add_service_files(
   editText.srv  
 )
 
+add_compile_options(-std=c++11)
+
 # Generate added messages and services
 generate_messages(DEPENDENCIES std_msgs)
 
@@ -35,5 +36,24 @@ add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
-# %EndTag(FULLTEXT)%
+## Testing
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  
+  add_rostest_gtest(
+    talkerTest
+    test/talkerTest.launch
+    test/main.cpp
+    test/talkerTest.cpp
+  )
 
+  target_link_libraries(
+    talkerTest
+    ${catkin_LIBRARIES}
+  )
+  add_dependencies(
+    talker
+    talkerTest
+    ${catkin_EXPORTED_TARGETS}
+  )
+endif()
