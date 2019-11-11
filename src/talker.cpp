@@ -78,7 +78,7 @@ n.advertise<beginner_tutorials::customString>("chatter", 1000);
    * a unique string for each message.
    */
 
-  ros::ServiceServer server = n.advertiseService("changeText", changeMessage);
+  ros::ServiceServer server = n.advertiseService("editText", changeMessage);
   int count = 0;
   ROS_DEBUG_STREAM("Starting string publisher");
   while (ros::ok()) {
